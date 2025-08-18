@@ -1,0 +1,6 @@
+@Ace_of_Fade_Smart_Hairtstyle_Suggestion_HostAddress = http://localhost:5069
+
+GET {{Ace_of_Fade_Smart_Hairtstyle_Suggestion_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
