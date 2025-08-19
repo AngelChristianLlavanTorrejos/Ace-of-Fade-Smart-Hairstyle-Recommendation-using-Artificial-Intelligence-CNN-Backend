@@ -9,5 +9,6 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Interfaces
         Task<List<Appointment>> FetchClientAppointmentsById(int id);
         Task<Appointment?> CancelAppointment(int id);
         Task<IEnumerable<Appointment>> GetAppointmentsByStatus(string? status);
+        Task<bool> UpdateAppointmentStatus(int id, UpdateAppointmentStatusDto dto);
     }
 }

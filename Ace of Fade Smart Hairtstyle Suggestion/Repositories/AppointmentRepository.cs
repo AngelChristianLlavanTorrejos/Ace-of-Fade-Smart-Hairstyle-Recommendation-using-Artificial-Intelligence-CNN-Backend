@@ -77,12 +77,25 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Repositories
                     .Include(appointment => appointment.Barber)
                     .Include(appointment => appointment.Status);
 
-            if (!string.IsNullOrEmpty(status))
+            if (!string.IsNullOrEmpty(status) && status != "All")
             {
-                query.Where(appointment => appointment.Status.Status == status);
+                query = query.Where(appointment => appointment.Status.Status == status);
             }
 
             return await query.ToListAsync();
+        }
+
+        public async Task<bool> UpdateAppointmentStatus(int id, UpdateAppointmentStatusDto update)
+        {
+            var appointmentToBeUpdated = await _context.Appointments.FirstOrDefaultAsync(a => a.Id == id);
+
+            if (appointmentToBeUpdated == null) return false;
+
+            appointmentToBeUpdated.StatusId = update.StatusId;
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

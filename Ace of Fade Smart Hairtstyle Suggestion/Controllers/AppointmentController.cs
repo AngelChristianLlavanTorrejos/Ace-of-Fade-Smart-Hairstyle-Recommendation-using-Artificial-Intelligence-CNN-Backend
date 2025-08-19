@@ -53,5 +53,17 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Controllers
             var appointments = await _appointmentRepository.GetAppointmentsByStatus(status);
             return Ok(appointments.Select(appointment => appointment.ToGetAppointmentsByStatusResponseDto()));
         }
+
+        [HttpPut("UpdateAppointmentStatus/{id:int}")]
+        public async Task<IActionResult> UpdateAppointmentStatus (int id, UpdateAppointmentStatusDto dto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var appointmentToBeUpdated = await _appointmentRepository.UpdateAppointmentStatus(id, dto);
+
+            if (!appointmentToBeUpdated) return BadRequest();
+
+            return Ok(new { message = "Update Successful" });
+        }
     }
 }
