@@ -12,7 +12,9 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Mapper
                 ClientId = barberReviewDto.ClientId,
                 BarberId = barberReviewDto.BarberId,
                 Stars = 0,
-                Comments = ""
+                Comments = "",
+                BarberName = barberReviewDto.BarberName,
+                Haircut = barberReviewDto.Haircut
             };
         }
     }

@@ -6,5 +6,8 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Interfaces
     public interface IBarberReviewRepository
     {
         Task<BarberReview> CreateReview(BarberReview barberReview);
+        Task<List<BarberReview>> GetBarbersToBeReview(int id);
+        Task<BarberReview?> ReviewBarber(ReviewBarberRequestDto dto);
+        Task<IEnumerable<BarberReview>> GetBarberReviews();
     }
 }

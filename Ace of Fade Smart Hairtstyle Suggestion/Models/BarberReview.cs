@@ -18,4 +18,8 @@ public partial class BarberReview
     public int Stars { get; set; }
 
     public string? Comments { get; set; }
+
+    public string? BarberName { get; set; }
+
+    public string? Haircut { get; set; }
 }

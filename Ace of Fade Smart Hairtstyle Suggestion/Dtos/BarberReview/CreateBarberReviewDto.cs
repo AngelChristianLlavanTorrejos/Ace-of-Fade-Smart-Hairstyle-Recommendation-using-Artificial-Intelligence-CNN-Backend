@@ -8,5 +8,7 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Dtos.BarberReview
         public int ClientId { get; set; }
         [Required]
         public int BarberId { get; set; }
+        public string? BarberName { get; set; }
+        public string? Haircut {  get; set; }
     }
 }
