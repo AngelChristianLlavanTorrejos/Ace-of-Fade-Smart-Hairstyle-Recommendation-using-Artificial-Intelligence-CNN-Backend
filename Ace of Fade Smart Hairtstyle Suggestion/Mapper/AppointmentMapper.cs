@@ -23,6 +23,8 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Mapper
             return new GetAppointmentsByStatusResponseDto
             {
                 Id = appointment.Id,
+                ClientId = appointment.ClientId,
+                BarberId = appointment.BarberId,
                 ClientName = appointment.Client.FirstName + " " +
                 (string.IsNullOrEmpty(appointment.Client.MiddleName) ? "" : appointment.Client.MiddleName + " ") +
                 appointment.Client.LastName,

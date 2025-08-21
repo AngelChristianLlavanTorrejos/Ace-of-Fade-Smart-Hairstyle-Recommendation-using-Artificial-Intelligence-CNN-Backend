@@ -3,6 +3,8 @@
     public class GetAppointmentsByStatusResponseDto
     {
         public int Id { get; set; }
+        public int ClientId { get; set; }
+        public int BarberId { get; set; }
         public string? ClientName { get; set; }
         public string? BarberName { get; set; }
         public string? Status { get; set; }
