@@ -2,7 +2,7 @@
 {
     public class UserPersonalInformationResponse
     {
-        public int ClientId { get; set; }
+        public int UserId { get; set; }
 
         public string Role { get; set; } = null!;
 

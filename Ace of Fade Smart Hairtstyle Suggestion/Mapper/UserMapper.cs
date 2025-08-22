@@ -40,7 +40,7 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Mapper
         {
             return new UserPersonalInformationResponse
             {
-                ClientId = user.UserId,
+                UserId = user.UserId,
                 Role = user.Role,
                 FirstName = user.FirstName,
                 MiddleName = user.MiddleName,
