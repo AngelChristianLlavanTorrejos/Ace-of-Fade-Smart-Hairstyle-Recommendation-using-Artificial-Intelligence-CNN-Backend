@@ -38,5 +38,19 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Controllers
 
             return Ok(new { message = "New Barber Created" });
         }
+
+        [HttpGet("GetBarbersCount")]
+        public async Task<IActionResult> GetBarbersCount()
+        {
+            var barbersCount = await _barberRepository.GetBarbersCount();
+            return Ok(barbersCount);
+        }
+
+        [HttpGet("GetTopPerformingBarbers")]
+        public async Task<IActionResult> GetTopPerformingBarbers()
+        {
+            var topPerformingBarbers = await _barberRepository.GetTopPerformingBarbers();
+            return Ok(topPerformingBarbers);
+        }
     }
 }

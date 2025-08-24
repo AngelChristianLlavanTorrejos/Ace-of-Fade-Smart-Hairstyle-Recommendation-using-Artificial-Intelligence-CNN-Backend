@@ -108,5 +108,28 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Repositories
 
             return true;
         }
+
+        public async Task<int> GetClientsCount()
+        {
+            var clientsCount = await _dbContext.Users.Where(u => u.Role == "Client").CountAsync();
+            return clientsCount;
+        }
+
+        public async Task<List<TopClientDto>> GetTopClients()
+        {
+            var topRegularClients = await _dbContext.Appointments.Include(a => a.Client)
+                .Where(a => a.StatusId == 6)
+                .GroupBy(a => a.Client.FirstName + " " + a.Client.LastName)
+                .Select(g => new TopClientDto
+                {
+                    ClientName = g.Key,
+                    CompletedAppointments = g.Count()
+                })
+                .OrderByDescending(x => x.CompletedAppointments)
+                .Take(3)
+                .ToListAsync();
+
+            return topRegularClients;
+        }
     }
 }

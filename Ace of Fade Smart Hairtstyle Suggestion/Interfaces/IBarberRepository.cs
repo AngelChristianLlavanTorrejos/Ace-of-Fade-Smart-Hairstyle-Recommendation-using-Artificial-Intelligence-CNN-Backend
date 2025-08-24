@@ -1,4 +1,5 @@
-﻿using Ace_of_Fade_Smart_Hairtstyle_Suggestion.Models;
+﻿using Ace_of_Fade_Smart_Hairtstyle_Suggestion.Dtos.Barber;
+using Ace_of_Fade_Smart_Hairtstyle_Suggestion.Models;
 
 namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Interfaces
 {
@@ -6,5 +7,7 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Interfaces
     {
         Task<Barber> CreateBarber(Barber barber);
         Task<List<Barber>> GetBarbers();
+        Task<int> GetBarbersCount();
+        Task<List<TopBarberDto>> GetTopPerformingBarbers();
     }
 }

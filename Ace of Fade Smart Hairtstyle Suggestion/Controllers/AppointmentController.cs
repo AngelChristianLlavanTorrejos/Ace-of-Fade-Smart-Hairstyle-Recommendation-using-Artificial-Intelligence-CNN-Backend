@@ -65,5 +65,26 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Controllers
 
             return Ok(new { message = "Update Successful" });
         }
+
+        [HttpGet("GetAppointmentsCountToday")]
+        public async Task<IActionResult> GetAppointmentsCountToday()
+        {
+            var appointmetsCountToday = await _appointmentRepository.GetAppointmentsCountToday();
+            return Ok(appointmetsCountToday);
+        }
+
+        [HttpGet("GetPendingAppointmentsCount")]
+        public async Task<IActionResult> GetPendingAppointmentsCount()
+        {
+            var pendingAppointmentsCount = await _appointmentRepository.GetPendingAppointmentsCount();
+            return Ok(pendingAppointmentsCount);
+        }
+
+        [HttpGet("GetTopHaircut")]
+        public async Task<IActionResult> GetTopHaircut()
+        {
+            var topHaircut = await _appointmentRepository.GetTopHaircut();
+            return Ok(topHaircut);
+        }
     }
 }

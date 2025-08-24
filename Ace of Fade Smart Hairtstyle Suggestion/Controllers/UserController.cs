@@ -89,5 +89,19 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Controllers
 
             return Ok(new { message = "Change Password Successful" });
         }
+
+        [HttpGet("GetClientsCount")]
+        public async Task<IActionResult> GetClientsCount()
+        {
+            var clientsCount = await _userRepository.GetClientsCount();
+            return Ok(clientsCount);
+        }
+
+        [HttpGet("GetTopClients")]
+        public async Task<IActionResult> GetTopClients()
+        {
+            var topClients = await _userRepository.GetTopClients();
+            return Ok(topClients);
+        }
     }
 }

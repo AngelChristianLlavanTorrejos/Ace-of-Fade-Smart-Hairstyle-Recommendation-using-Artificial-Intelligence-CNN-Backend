@@ -14,5 +14,7 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Interfaces
         Task<User?> UpdatePersonalInformation(int id, UserUpdateProfileInformation dto);
         Task<User?> FetchUserById(int id);
         Task<bool> ChangePassword(int id, ChangePasswordRequestDto dto);
+        Task<int> GetClientsCount();
+        Task<List<TopClientDto>> GetTopClients();
     }
 }

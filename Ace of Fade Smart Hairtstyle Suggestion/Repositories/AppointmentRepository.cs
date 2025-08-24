@@ -97,5 +97,40 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Repositories
 
             return true;
         }
+
+        public async Task<int> GetAppointmentsCountToday()
+        {
+            var today = DateOnly.FromDateTime(DateTime.Now);
+
+            var appointmentsCountToday = await _context.Appointments.Where(a => a.Date == today)
+                .CountAsync();
+
+            return appointmentsCountToday;
+        }
+
+        public async Task<int> GetPendingAppointmentsCount()
+        {
+            var pendingAppointmentsCount = await _context.Appointments.Where(a => a.StatusId == 3)
+                .CountAsync();
+
+            return pendingAppointmentsCount;
+        }
+
+        public async Task<List<TopHaircutDto>> GetTopHaircut()
+        {
+            var topHaircut = await _context.Appointments
+                .Where(a => !string.IsNullOrEmpty(a.Haircut))
+                .GroupBy(a => a.Haircut)
+                .Select(g => new TopHaircutDto
+                {
+                    Haircut = g.Key,
+                    TimesChosen = g.Count()
+                })
+                .OrderByDescending(x => x.TimesChosen)
+                .Take(5)
+                .ToListAsync();
+
+            return topHaircut;
+        }
     }
 }
