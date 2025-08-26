@@ -22,6 +22,11 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Repositories
             return barber;
         }
 
+        public async Task<Barber?> GetBarberById(int id)
+        {
+            return await _dbContext.Barbers.FirstOrDefaultAsync(b => b.Id == id);
+        }
+
         public async Task<List<Barber>> GetBarbers()
         {
             return await _dbContext.Barbers.ToListAsync();

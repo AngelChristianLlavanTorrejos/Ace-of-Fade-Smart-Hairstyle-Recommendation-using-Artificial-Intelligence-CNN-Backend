@@ -37,4 +37,10 @@ public partial class User
 
     [InverseProperty("Client")]
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+
+    [InverseProperty("Admin")]
+    public virtual ICollection<ChatRoom> ChatRoomAdmins { get; set; } = new List<ChatRoom>();
+
+    [InverseProperty("Client")]
+    public virtual ICollection<ChatRoom> ChatRoomClients { get; set; } = new List<ChatRoom>();
 }

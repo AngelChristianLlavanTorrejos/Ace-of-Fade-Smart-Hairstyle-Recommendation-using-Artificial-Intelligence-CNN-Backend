@@ -52,5 +52,15 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Controllers
             var topPerformingBarbers = await _barberRepository.GetTopPerformingBarbers();
             return Ok(topPerformingBarbers);
         }
+
+        [HttpGet("GetBarberById/{id:int}")]
+        public async Task<IActionResult> GetBarberById(int id)
+        {
+            var barber = await _barberRepository.GetBarberById(id);
+
+            if (barber == null) return NotFound();
+
+            return Ok(barber.ToGetBarberById());
+        }
     }
 }

@@ -37,5 +37,23 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Mapper
                 Haircut = appointment.Haircut
             };
         }
+
+        public static FetchBarberAppointmentsByIdDto ToBarberAppointmentsByIdDto (this Appointment model)
+        {
+            return new FetchBarberAppointmentsByIdDto
+            {
+                Id = model.Id,
+                Status = model.Status.Status,
+                ClientName = model.Client.FirstName + " " +
+                (!string.IsNullOrEmpty(model.Client.MiddleName) ? model.Client.MiddleName + " " : " ") +
+                model.Client.LastName,
+                Date = model.Date,
+                TimeIn = model.TimeIn,
+                TimeOut = model.TimeOut,
+                Haircut = model.Haircut ?? "",
+                Message = model.Message ?? "",
+                CreatedAt = model.CreatedAt
+            };
+        }
     }
 }

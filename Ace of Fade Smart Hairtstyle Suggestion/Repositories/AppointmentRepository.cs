@@ -132,5 +132,14 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Repositories
 
             return topHaircut;
         }
+
+        public Task<List<Appointment>> FetchBarberAppointmentsById(int id)
+        {
+            return _context.Appointments.Include(a => a.Client)
+                .Include(a => a.Status)
+                .Where(a => a.BarberId == id)
+                .OrderByDescending(a => a.Date)
+                .ToListAsync();
+        }
     }
 }

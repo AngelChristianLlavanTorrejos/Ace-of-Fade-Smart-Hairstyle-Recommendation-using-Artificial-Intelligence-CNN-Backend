@@ -22,6 +22,8 @@ builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>(
 builder.Services.AddScoped<IBarberRepository, BarberRepository>();
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IBarberReviewRepository, BarberReviewRepository>();
+builder.Services.AddScoped<IChatRoom, ChatRoomRepository>();
+builder.Services.AddScoped<IConversationRepository, ConversationRepository>();
 
 var app = builder.Build();
 
@@ -32,7 +34,7 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference(options =>
     {
         options
-            .WithTitle("Timekeeping Api");
+            .WithTitle("Smart Hairstyle Suggestion Api");
     });
 }
 

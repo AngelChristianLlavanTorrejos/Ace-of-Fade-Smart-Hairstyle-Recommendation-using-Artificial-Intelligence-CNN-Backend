@@ -13,5 +13,14 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Mapper
                 Name = barber.Name,
             };
         }
+
+        public static GetBarberById ToGetBarberById (this Barber barber)
+        {
+            return new GetBarberById
+            {
+                Id = barber.Id,
+                Name = barber.Name,
+            };
+        }
     }
 }

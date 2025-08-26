@@ -9,5 +9,6 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Interfaces
         Task<List<Barber>> GetBarbers();
         Task<int> GetBarbersCount();
         Task<List<TopBarberDto>> GetTopPerformingBarbers();
+        Task<Barber?> GetBarberById(int id);
     }
 }

@@ -14,5 +14,6 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Interfaces
         Task<int> GetAppointmentsCountToday();
         Task<int> GetPendingAppointmentsCount();
         Task<List<TopHaircutDto>> GetTopHaircut();
+        Task<List<Appointment>> FetchBarberAppointmentsById(int id);
     }
 }

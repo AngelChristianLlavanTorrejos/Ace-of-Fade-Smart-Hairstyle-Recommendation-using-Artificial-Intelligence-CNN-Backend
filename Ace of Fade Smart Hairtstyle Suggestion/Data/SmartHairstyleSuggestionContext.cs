@@ -24,6 +24,10 @@ public partial class SmartHairstyleSuggestionContext : DbContext
 
     public virtual DbSet<BarberReview> BarberReviews { get; set; }
 
+    public virtual DbSet<ChatRoom> ChatRooms { get; set; }
+
+    public virtual DbSet<Conversation> Conversations { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -63,6 +67,30 @@ public partial class SmartHairstyleSuggestionContext : DbContext
         modelBuilder.Entity<BarberReview>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__BarberRe__3214EC07948BB634");
+        });
+
+        modelBuilder.Entity<ChatRoom>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__ChatRoom__3214EC07101ECB01");
+
+            entity.HasOne(d => d.Admin).WithMany(p => p.ChatRoomAdmins)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ChatRooms__Admin__503BEA1C");
+
+            entity.HasOne(d => d.Client).WithMany(p => p.ChatRoomClients)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ChatRooms__Clien__4F47C5E3");
+        });
+
+        modelBuilder.Entity<Conversation>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Conversa__3214EC0705669AC1");
+
+            entity.Property(e => e.SentAt).HasDefaultValueSql("(getutcdate())");
+
+            entity.HasOne(d => d.ChatRoom).WithMany(p => p.Conversations)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Conversations_ChatRooms");
         });
 
         modelBuilder.Entity<User>(entity =>

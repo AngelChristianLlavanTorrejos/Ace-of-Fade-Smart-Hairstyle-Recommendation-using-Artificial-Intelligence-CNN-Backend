@@ -55,7 +55,7 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Controllers
         }
 
         [HttpPut("UpdateAppointmentStatus/{id:int}")]
-        public async Task<IActionResult> UpdateAppointmentStatus (int id, UpdateAppointmentStatusDto dto)
+        public async Task<IActionResult> UpdateAppointmentStatus(int id, UpdateAppointmentStatusDto dto)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -85,6 +85,13 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Controllers
         {
             var topHaircut = await _appointmentRepository.GetTopHaircut();
             return Ok(topHaircut);
+        }
+
+        [HttpGet("FetchBarberAppointmentsById/{id:int}")]
+        public async Task<IActionResult> FetchBarberAppointmentsById(int id)
+        {
+            var appointments = await _appointmentRepository.FetchBarberAppointmentsById(id);
+            return Ok(appointments.Select(a => a.ToBarberAppointmentsByIdDto()));
         }
     }
 }
