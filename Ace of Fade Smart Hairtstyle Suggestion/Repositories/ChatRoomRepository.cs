@@ -42,5 +42,14 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Repositories
 
             return chatRoomId;
         }
+
+        public async Task<IEnumerable<ChatRoom>> GetChatRooms()
+        {
+            var chatRooms = await _context.ChatRooms.Include(cr => cr.Client)
+                .OrderBy(cr => cr.Id)
+                .ToListAsync();
+
+            return chatRooms;
+        }
     }
 }

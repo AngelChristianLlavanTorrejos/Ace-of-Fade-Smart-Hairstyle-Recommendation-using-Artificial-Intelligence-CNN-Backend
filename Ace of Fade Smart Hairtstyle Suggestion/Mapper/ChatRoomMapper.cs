@@ -23,5 +23,17 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Mapper
                 AdminId = chatRoom.AdminId
             };
         }
+
+        public static GetChatRoomResponse ToGetChatRoomResponse(this ChatRoom chatRoom)
+        {
+            return new GetChatRoomResponse
+            {
+                Id = chatRoom.Id,
+                ClientName = chatRoom.Client.FirstName + " " +
+                    (string.IsNullOrEmpty(chatRoom.Client.MiddleName) ? chatRoom.Client.MiddleName + " " : "") +
+                    chatRoom.Client.LastName
+
+            };
+        }
     }
 }

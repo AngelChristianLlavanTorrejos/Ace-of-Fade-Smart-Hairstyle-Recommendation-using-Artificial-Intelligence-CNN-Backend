@@ -9,5 +9,6 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Interfaces
         Task<ChatRoom> CreateChatRoomAsync (ChatRoom chatRoom);
         Task<bool> IsChatRoomExist(IsChatRoomExistRequest chatRoomExist);
         Task<int> GetChatRoomIdAsync(GetChatRoomIdRequest chatRoomIdRequest);
+        Task<IEnumerable<ChatRoom>> GetChatRooms();
     }
 }

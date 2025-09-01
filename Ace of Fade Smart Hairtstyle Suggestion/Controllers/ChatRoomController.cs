@@ -59,5 +59,12 @@ namespace Ace_of_Fade_Smart_Hairtstyle_Suggestion.Controllers
 
             return Ok(chatRoomId);
         }
+
+        [HttpGet("GetChatRooms")]
+        public async Task<IActionResult> GetChatRooms()
+        {
+            var chatRooms = await _chatRoomRepo.GetChatRooms();
+            return Ok(chatRooms.Select(cr => cr.ToGetChatRoomResponse()));
+        }
     }
 }
